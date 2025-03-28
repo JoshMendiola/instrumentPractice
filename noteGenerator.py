@@ -1,14 +1,21 @@
 import random, time
 note = ["A","A","A#","Bb","B","C","C#","D","D#","Eb","E","F","F#","Gb","G","G#","Ab"]
+scale = ["", "m", "7", "maj7", "min7"]
 def menu():
     print("Welcome to Joshuas Music Practice Routine")
     print("1. String Instrument Practice")
     print("2. Wind Instrument Practice")
+    print("3. Chord Practice")
+    print("4. Quit")
     direct = input("\nPlease Enter the number of your routine\n")
     if(direct == "1"):
         stringFretboardMemorization()
     elif(direct == "2"):
         windFingeringMemorization()
+    elif(direct == "3"):
+        chordPractice()
+    elif(direct == "4"):
+        quit()
 
 def stringFretboardMemorization():
     choice = input("\nWhat instrument are you playing?"
@@ -100,6 +107,22 @@ def windInstrumentList():
     print("4. Trombone")
     print("5. Trumpet")
     windOctave = input("\nWhat instrument are you playing?\n")
+
+def chordPractice():
+    sec = input("\nHow many seconds inbetween?\n")
+    sec = float(sec)
+    runtime = input("\nHow many times would you like it to run?\n")
+    runtime = int(runtime)
+    if(runtime == 0):
+        menu()
+    print("\n")
+    while runtime != 0:
+        key = random.choice(note)
+        chordTone = random.choice(scale)
+        print("Play " + key + chordTone + "\n")
+        time.sleep(sec)
+        runtime -= 1
+    menu()
 menu()
 
 
